@@ -1,0 +1,27 @@
+<div></div>
+     <main>
+    <h1>Detalle del Producto</h1>
+    <ul id="product-list">
+      {{#each product}}
+      {{#if this._id}}
+        <li id="product-{{this.id}}">
+          <h2>{{this.title}}</h2>
+          <p>Descripción: {{this.description}}</p>
+          <p>Precio: ${{this.price}}</p>
+          <p>Código: {{this.code}}</p>
+          <p>Stock: {{this.stock}}</p>
+          <p>Estado: {{this.status}}</p>
+          <p>Categoría: {{this.category}}</p>
+          <button onclick="addToCart('{{this._id}}')">Agregar al Carrito</button>
+          <button onclick="window.location.href='http://localhost:8080/products'">Volver</button>
+
+       </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </main>
+</div>
+
+<script src="/js/index.js"></script>
+
+  

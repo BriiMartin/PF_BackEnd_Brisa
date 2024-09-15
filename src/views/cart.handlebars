@@ -1,0 +1,27 @@
+<header></header>
+    <h1>Visualizacion de carrito</h1>
+  </header>
+  
+<main></main>
+  <h1>Lista de Productos en el carrito</h1>
+  <ul id="product-list">
+    {{#each carts}}
+      <li id="product-{{this.product._id}}">
+        <h2>{{this.product.title}}</h2>
+        <p>Descripción: {{this.product.description}}</p>
+        <p>Precio: ${{this.product.price}}</p>
+        <p>Código: {{this.product.code}}</p>
+        <p>Stock: {{this.product.stock}}</p>
+        <p>Estado: {{this.product.status}}</p>
+        <p>Categoría: {{this.product.category}}</p>
+        <p>Cantidad en el carrito: {{this.quantity}}</p>
+        <button onclick="deleteProductCart('{{this.product._id}}', '{{../cartId}}')">Eliminar</button>
+         </li>
+    {{/each}}
+  </ul>
+</main>
+</div>
+
+<script src="/js/index.js"></script>
+
+ 

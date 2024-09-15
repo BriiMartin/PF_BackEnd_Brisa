@@ -1,0 +1,45 @@
+  <header></header>
+    <h1>Gestión de Productos</h1>
+  </header>
+
+  <section id="product-form-container">
+    <div id="styleProducto">
+      <h1>Agregar Producto</h1>
+      <form id="product-form">
+        <input type="text" id="title" placeholder="Título" required />
+        <input type="text" id="description" placeholder="Descripción" required />
+        <input type="number" id="price" placeholder="Precio" required />
+        <input type="text" id="code" placeholder="Código" required />
+        <input type="number" id="stock" placeholder="Stock" required />
+        <label for="status">
+          <input type="checkbox" id="status" name="Activo" checked/>
+          Activo
+        </label>
+        <input type="text" id="category" placeholder="Categoría" required />
+        <button type="submit">Agregar Producto</button>
+      </form>
+    </div>
+  </section>
+
+  <main>
+    <h1>Lista de Productos en Tiempo Real</h1>
+    <ul id="product-list">
+      {{#each payload}}
+        <li id="product-{{this.id}}">
+          <h2>{{this.title}}</h2>
+          <p>Descripción: {{this.description}}</p>
+          <p>Precio: ${{this.price}}</p>
+          <p>Código: {{this.code}}</p>
+          <p>Stock: {{this.stock}}</p>
+          <p>Estado: {{this.status}}</p>
+          <p>Categoría: {{this.category}}</p>
+          <button onclick="deleteProduct('{{this.id}}')">Eliminar</button>
+        </li>
+      {{/each}}
+    </ul>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<main>
+  <h1>Lista de Productos</h1>
+    <ul id="product-list">
+    {{#each payload}}
+      <li>
+        <h2>{{this.title}}</h2>
+        <p>{{this.description}}</p>
+        <p>Precio: ${{this.price}}</p>
+        <button onclick="deleteProduct('{{this._id}}')">Eliminar</button>
+        <button
+          onclick="window.location.href='http://localhost:8080/products/{{this._id}}'"
+        >Visualizar</button>
+        <button onclick="addToCart('{{this._id}}')">Agregar al Carrito</button>
+        <button onclick="viewCart()">Ver Carrito</button>
+      </li>
+    {{/each}}
+  </ul>
+
+  <!-- Paginación -->
+  <div class="pagination">
+    <!-- Botón para la primera página -->
+    {{#if hasPrevPage}}
+      <a href="/products?page=1" class="first-button">Primera Página</a>
+    {{else}}
+      <span class="first-button disabled">Primera Página</span>
+    {{/if}}
+
+    <!-- Botón para página anterior -->
+    {{#if hasPrevPage}}
+      <a href="{{prevLink}}" class="prev-button">Página Anterior</a>
+    {{else}}
+      <span class="prev-button disabled">Página Anterior</span>
+    {{/if}}
+
+    <!-- Botón para página siguiente -->
+    {{#if hasNextPage}}
+      <a href="{{nextLink}}" class="next-button">Página Siguiente</a>
+    {{else}}
+      <span class="next-button disabled">Página Siguiente</span>
+    {{/if}}
+
+    <!-- Botón para la última página -->
+    {{#if hasNextPage}}
+      <a href="/products?page={{totalPages}}" class="last-button">Última
+        Página</a>
+    {{else}}
+      <span class="last-button disabled">Última Página</span>
+    {{/if}}
+  </div>
+</main>
+
+<script src="/js/index.js"></script>
